@@ -13,8 +13,6 @@ library(dplyr)
 library(lubridate)
 library(rCharts)
 
-series = c("Original", "Seasonally Adjusted", "Trend")
-
 # Load the dataset created by data-processing.R
 housing_finance <- readr::read_csv(file.path("data", "housing-finance.csv")) %>%
   mutate(
