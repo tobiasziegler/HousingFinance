@@ -1,17 +1,20 @@
 # Load required packages
+library(curl)
 library(readxl)
 library(readr)
 library(tidyr)
 library(dplyr)
 
 # Create data folder and download the data file if they don't already exist.
-data_url <- "http://www.abs.gov.au/ausstats/meisubs.NSF/log?openagent&5609011.xls&5609.0&Time%20Series%20Spreadsheet&FAF9288289AB4F11CA257F1500123742&0&Oct%202015&09.12.2015&Latest"
+data_url_old <- "http://www.abs.gov.au/ausstats/meisubs.NSF/log?openagent&5609011.xls&5609.0&Time%20Series%20Spreadsheet&FAF9288289AB4F11CA257F1500123742&0&Oct%202015&09.12.2015&Latest"
+data_url_old2 <- "http://www.abs.gov.au/ausstats/meisubs.nsf/log?openagent&5609011.xls&5609.0&Time%20Series%20Spreadsheet&2252D837852C2C56CA257F3A00189B4F&0&Nov%202015&15.01.2016&Latest"
+data_url <- "http://www.abs.gov.au/ausstats/meisubs.nsf/log?openagent&5609011.xls&5609.0&Time%20Series%20Spreadsheet&D30BA82E02D34A2ACA25838400152F1F&0&November%202018&17.01.2019&Latest"
 data_local <- file.path("data", "ABS-5609.0-HousingFinance-Table11.xls")
 if(!file.exists("data")) {
   dir.create("data")
 }
 if(!file.exists(data_local)) {
-  download.file(data_url, data_local, method = "curl")
+  curl_download(data_url, data_local)
 }
 
 # Read the Excel sheet, then tidy and prepare the data.

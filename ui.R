@@ -28,8 +28,8 @@ shinyUI(fluidPage(
         label = h3("Timeline"),
         sep = "",
         min = 1975,
-        max = 2015,
-        value = c(1975,2015)
+        max = 2018,
+        value = c(1975,2018)
       ),
       radioButtons(
         "data_series",
